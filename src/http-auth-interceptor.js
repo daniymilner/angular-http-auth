@@ -54,12 +54,12 @@
           var config = rejection.config || {};
           if (!config.ignoreAuthModule) {
             switch (rejection.status) {
-              case 401:
+              case 417:
                 var deferred = $q.defer();
                 httpBuffer.append(config, deferred);
                 $rootScope.$broadcast('event:auth-loginRequired', rejection);
                 return deferred.promise;
-              case 403:
+              case 401:
                 $rootScope.$broadcast('event:auth-forbidden', rejection);
                 break;
             }
